@@ -1,1 +1,51 @@
 Index
+
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blikající Pozadí</title>
+    <style>
+        /* Globální nastavení pro stránku */
+        body {
+            margin: 0;
+            height: 100vh; /* Celková výška stránky */
+            display: flex;
+            justify-content: center; /* Vertikální zarovnání */
+            align-items: center;     /* Horizontální zarovnání */
+            font-family: Arial, sans-serif;
+            text-align: center;
+            color: white;
+            background-color: #ff6347; /* počáteční barva pozadí */
+            animation: blinkBackground 1s infinite alternate; /* Aplikace animace blikajícího pozadí */
+        }
+
+        /* Definice animace pro blikání pozadí */
+        @keyframes blinkBackground {
+            0% {
+                background-color: #ff6347; /* červená */
+            }
+            50% {
+                background-color: #32cd32; /* zelená */
+            }
+            100% {
+                background-color: #1e90ff; /* modrá */
+            }
+        }
+
+        /* Styl pro text */
+        h1 {
+            font-size: 3rem; /* Velikost písma */
+        }
+        p {
+            font-size: 1.5rem; /* Velikost textu */
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>Blikající Pozadí</h1>
+        <p>Tento text je ve středu obrazovky.</p>
+    </div>
+</body>
+</html>

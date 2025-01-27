@@ -1,60 +1,9 @@
-
-
-<html lang="cs">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blikající Pozadí</title>
-    <style>
-        /* Globální nastavení pro stránku */
-        body {
-            margin: 0;
-            height: 100vh; /* Celková výška stránky */
-            display: flex;
-            justify-content: center; /* Vertikální zarovnání */
-            align-items: center;     /* Horizontální zarovnání */
-            font-family: Arial, sans-serif;
-            text-align: center;
-            color: white;
-            background-color: #ff6347; /* počáteční barva pozadí */
-            animation: blinkBackground 1s infinite alternate; /* Aplikace animace blikajícího pozadí */
-        }
-
-        /* Definice animace pro blikání pozadí */
-        @keyframes blinkBackground {
-            0% {
-                background-color: #ff6347; /* červená */
-            }
-            50% {
-                background-color: #32cd32; /* zelená */
-            }
-            100% {
-                background-color: #1e90ff; /* modrá */
-            }
-        }
-
-        /* Styl pro text */
-        h1 {
-            font-size: 3rem; /* Velikost písma */
-        }
-        p {
-            font-size: 1.5rem; /* Velikost textu */
-        }
-    </style>
-</head>
-<body>
-    <div>
-        <h1>Blikající Pozadí</h1>
-        <p>Tento text je ve středu obrazovky.</p>
-    </div>
-</body>
-</html>
 <!DOCTYPE html>
 <html lang="cs">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zvířata na světě</title>
+    <title>7 Zvířat a jejich popis</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -62,86 +11,104 @@
             padding: 0;
             background-color: #f4f4f4;
         }
+
         header {
             background-color: #4CAF50;
             color: white;
             text-align: center;
             padding: 20px 0;
         }
+
         .container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
         }
+
         .animal-card {
             background-color: white;
             border-radius: 8px;
-            margin: 10px;
-            width: 250px;
-            text-align: center;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
         }
+
         .animal-card img {
             width: 100%;
-            border-top-left-radius: 8px;
-            border-top-right-radius: 8px;
+            height: auto;
+            border-bottom: 2px solid #ddd;
         }
+
         .animal-card h3 {
-            margin: 10px 0;
+            margin: 10px;
+            font-size: 1.2em;
         }
+
         .animal-card p {
             padding: 0 10px 10px;
+            color: #555;
         }
+
+        .animal-card:hover {
+            transform: translateY(-10px);
+        }
+
     </style>
 </head>
 <body>
-    <header>
-        <h1>7 Zvířat a jejich popis</h1>
-    </header>
 
-    <div class="container">
-        <div class="animal-card">
-            <img src="https://via.placeholder.com/250x150?text=Pes" alt="Pes">
-            <h3>Pes</h3>
-            <p>Pes je věrný společník člověka, známý svou loajalitou a přítulností.</p>
-        </div>
+<header>
+    <h1>7 Zvířat a jejich popis</h1>
+</header>
 
-        <div class="animal-card">
-            <img src="https://via.placeholder.com/250x150?text=Ko%C4%8Dka" alt="Kočka">
-            <h3>Kočka</h3>
-            <p>Kočka je nezávislé zvíře, které si často užívá svou samotu, ale může být také velmi mazlivá.</p>
-        </div>
-
-        <div class="animal-card">
-            <img src="https://via.placeholder.com/250x150?text=Slon" alt="Slon">
-            <h3>Slon</h3>
-            <p>Slon je největší suchozemské zvíře, známé svou inteligencí a sociálním chováním.</p>
-        </div>
-
-        <div class="animal-card">
-            <img src="https://via.placeholder.com/250x150?text=Lev" alt="Lev">
-            <h3>Lev</h3>
-            <p>Lev je králem savany, známý svou silou a majestátní hřívou.</p>
-        </div>
-
-        <div class="animal-card">
-            <img src="https://via.placeholder.com/250x150?text=Krokod%C3%ADl" alt="Krokodýl">
-            <h3>Krokodýl</h3>
-            <p>Krokodýl je predátor, který žije v teplých oblastech a má silnou stavbu těla pro lovení.</p>
-        </div>
-
-        <div class="animal-card">
-            <img src="https://via.placeholder.com/250x150?text=Kralik" alt="Králík">
-            <h3>Králík</h3>
-            <p>Králíci jsou malí, roztomilí savci, známí svou rychlostí a schopností se rychle množit.</p>
-        </div>
-
-        <div class="animal-card">
-            <img src="https://via.placeholder.com/250x150?text=Opice" alt="Opice">
-            <h3>Opice</h3>
-            <p>Opice jsou chytrá zvířata, která se často vyskytují v tropických oblastech a mají vynikající dovednosti při používání nástrojů.</p>
-        </div>
+<div class="container">
+    <div class="animal-card">
+        <img src="https://via.placeholder.com/250x150?text=Pes" alt="Pes">
+        <h3>Pes</h3>
+        <p>Pes je věrný společník člověka, známý svou loajalitou a přítulností.</p>
     </div>
+
+    <div class="animal-card">
+        <img src="https://via.placeholder.com/250x150?text=Ko%C4%8Dka" alt="Kočka">
+        <h3>Kočka</h3>
+        <p>Kočka je nezávislé zvíře, které si často užívá svou samotu, ale může být také velmi mazlivá.</p>
+    </div>
+
+    <div class="animal-card">
+        <img src="https://via.placeholder.com/250x150?text=Slon" alt="Slon">
+        <h3>Slon</h3>
+        <p>Slon je největší suchozemské zvíře, známé svou inteligencí a sociálním chováním.</p>
+    </div>
+
+    <div class="animal-card">
+        <img src="https://via.placeholder.com/250x150?text=Lev" alt="Lev">
+        <h3>Lev</h3>
+        <p>Lev je králem savany, známý svou silou a majestátní hřívou.</p>
+    </div>
+
+    <div class="animal-card">
+        <img src="https://via.placeholder.com/250x150?text=Krokod%C3%ADl" alt="Krokodýl">
+        <h3>Krokodýl</h3>
+        <p>Krokodýl je predátor, který žije v teplých oblastech a má silnou stavbu těla pro lovení.</p>
+    </div>
+
+    <div class="animal-card">
+        <img src="https://via.placeholder.com/250x150?text=Kralik" alt="Králík">
+        <h3>Králík</h3>
+        <p>Králíci jsou malí, roztomilí savci, známí svou rychlostí a schopností se rychle množit.</p>
+    </div>
+
+    <div class="animal-card">
+        <img src="https://via.placeholder.com/250x150?text=Opice" alt="Opice">
+        <h3>Opice</h3>
+        <p>Opice jsou chytrá zvířata, která se často vyskytují v tropických oblastech a mají vynikající dovednosti při používání nástrojů.</p>
+    </div>
+</div>
+
 </body>
 </html>
+
+
+
+

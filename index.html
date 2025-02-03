@@ -3,112 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>7 Zvířat a jejich popis</title>
+    <title>Fotbaloví Hráči - FC Barcelona</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
             background-color: #f4f4f4;
+            color: #333;
         }
-
-        header {
-            background-color: #4CAF50;
-            color: white;
+        h1 {
             text-align: center;
-            padding: 20px 0;
+            color: #003B7D; /* Barva klubu - modrá */
         }
-
-        .container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+        .player {
+            background-color: #ffffff;
             padding: 20px;
-        }
-
-        .animal-card {
-            background-color: white;
+            margin: 10px 0;
             border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease-in-out;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
-
-        .animal-card img {
-            width: 100%;
-            height: auto;
-            border-bottom: 2px solid #ddd;
+        .player h2 {
+            color: #A50034; /* Barva klubu - červená */
         }
-
-        .animal-card h3 {
-            margin: 10px;
-            font-size: 1.2em;
+        .player p {
+            font-size: 16px;
         }
-
-        .animal-card p {
-            padding: 0 10px 10px;
-            color: #555;
+        .player img {
+            max-width: 150px;
+            border-radius: 10px;
         }
-
-        .animal-card:hover {
-            transform: translateY(-10px);
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
         }
-
     </style>
 </head>
 <body>
+    <h1>Seznam Fotbalových Hráčů - FC Barcelona</h1>
 
-<header>
-    <h1>7 Zvířat a jejich popis</h1>
-</header>
+    <div class="container">
+        <div class="player">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Lionel_Messi_2021.jpg/1200px-Lionel_Messi_2021.jpg" alt="Lionel Messi">
+            <h2>Lionel Messi</h2>
+            <p><strong>Pozice:</strong> Útočník</p>
+            <p><strong>Věk:</strong> 36</p>
+            <p><strong>Góly:</strong> 672</p>
+            <p><strong>Klub:</strong> FC Barcelona (do 2021)</p>
+        </div>
 
-<div class="container">
-    <div class="animal-card">
-        <img src="pes.jpg" alt="Pes"> <!-- Nahradit s tvým obrázkem -->
-        <h3>Pes</h3>
-        <p>Pes je věrný společník člověka, známý svou loajalitou a přítulností.</p>
+        <div class="player">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Busquets_2018.jpg/800px-Busquets_2018.jpg" alt="Sergio Busquets">
+            <h2>Sergio Busquets</h2>
+            <p><strong>Pozice:</strong> Záložník</p>
+            <p><strong>Věk:</strong> 35</p>
+            <p><strong>Starty:</strong> 590</p>
+            <p><strong>Klub:</strong> FC Barcelona</p>
+        </div>
+
+        <div class="player">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Antoine_Griezmann_2019.jpg/800px-Antoine_Griezmann_2019.jpg" alt="Antoine Griezmann">
+            <h2>Antoine Griezmann</h2>
+            <p><strong>Pozice:</strong> Útočník</p>
+            <p><strong>Věk:</strong> 32</p>
+            <p><strong>Góly:</strong> 138</p>
+            <p><strong>Klub:</strong> FC Barcelona (2019-2021)</p>
+        </div>
+
+        <div class="player">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/FCB_-_Jordi_Alba.jpg/800px-FCB_-_Jordi_Alba.jpg" alt="Jordi Alba">
+            <h2>Jordi Alba</h2>
+            <p><strong>Pozice:</strong> Obránce</p>
+            <p><strong>Věk:</strong> 34</p>
+            <p><strong>Starty:</strong> 420</p>
+            <p><strong>Klub:</strong> FC Barcelona</p>
+        </div>
+
+        <div class="player">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Marc-Andr%C3%A9_ter_Stegen_2018.jpg/800px-Marc-Andr%C3%A9_ter_Stegen_2018.jpg" alt="Marc-André ter Stegen">
+            <h2>Marc-André ter Stegen</h2>
+            <p><strong>Pozice:</strong> Brankář</p>
+            <p><strong>Věk:</strong> 31</p>
+            <p><strong>Čisté účty:</strong> 100+</p>
+            <p><strong>Klub:</strong> FC Barcelona</p>
+        </div>
     </div>
-
-    <div class="animal-card">
-        <img src="kocka.jpg" alt="Kočka"> <!-- Nahradit s tvým obrázkem -->
-        <h3>Kočka</h3>
-        <p>Kočka je nezávislé zvíře, které si často užívá svou samotu, ale může být také velmi mazlivá.</p>
-    </div>
-
-    <div class="animal-card">
-        <img src="slon.jpg" alt="Slon"> <!-- Nahradit s tvým obrázkem -->
-        <h3>Slon</h3>
-        <p>Slon je největší suchozemské zvíře, známé svou inteligencí a sociálním chováním.</p>
-    </div>
-
-    <div class="animal-card">
-        <img src="lev.jpg" alt="Lev"> <!-- Nahradit s tvým obrázkem -->
-        <h3>Lev</h3>
-        <p>Lev je králem savany, známý svou silou a majestátní hřívou.</p>
-    </div>
-
-    <div class="animal-card">
-        <img src="krokodyl.jpg" alt="Krokodýl"> <!-- Nahradit s tvým obrázkem -->
-        <h3>Krokodýl</h3>
-        <p>Krokodýl je predátor, který žije v teplých oblastech a má silnou stavbu těla pro lovení.</p>
-    </div>
-
-    <div class="animal-card">
-        <img src="kralik.jpg" alt="Králík"> <!-- Nahradit s tvým obrázkem -->
-        <h3>Králík</h3>
-        <p>Králíci jsou malí, roztomilí savci, známí svou rychlostí a schopností se rychle množit.</p>
-    </div>
-
-    <div class="animal-card">
-        <img src="opice.jpg" alt="Opice"> <!-- Nahradit s tvým obrázkem -->
-        <h3>Opice</h3>
-        <p>Opice jsou chytrá zvířata, která se často vyskytují v tropických oblastech a mají vynikající dovednosti při používání nástrojů.</p>
-    </div>
-</div>
-
 </body>
 </html>
-
 
 
 

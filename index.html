@@ -121,12 +121,14 @@
     </footer>
 </body>
 </html>
+/* Obecné styly */
 body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
     color: #333;
+    box-sizing: border-box; /* Aby padding a margin byly součástí šířky */
 }
 
 h1 {
@@ -147,6 +149,7 @@ p {
     display: flex;
     justify-content: center;
     margin-top: 20px;
+    padding: 0 10px; /* Zajistí, že okraje nejsou u stěn */
 }
 
 /* Flexbox pro zobrazení hráčů */
@@ -156,6 +159,7 @@ p {
     gap: 20px;
     padding: 20px;
     max-width: 1200px;
+    width: 100%;
 }
 
 /* Styl pro jednotlivé karty hráčů */
@@ -208,15 +212,26 @@ footer p {
 }
 
 /* Responsivita pro mobilní zařízení */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
     .players {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr); /* 2 hráči na řádku pro tablety */
     }
 
     h1 {
-        font-size: 28px;
+        font-size: 30px;
     }
 }
 
+@media (max-width: 768px) {
+    .players {
+        grid-template-columns: 1fr; /* 1 hráč na řádku pro mobilní zařízení */
+    }
 
+    h1 {
+        font-size: 24px;
+    }
 
+    .player img {
+        height: 200px; /* Menší obrázky na mobilech */
+    }
+}

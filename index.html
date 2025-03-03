@@ -107,7 +107,7 @@
     </div>
 </div>
  
-<!-- Modální okno pro Neymara -->
+<!-- Modální okno pro Neymara --> 
 <div id="player2" class="modal">
     <div class="modal-content">
         <span class="close" onclick="closeModal('player2')">&times;</span>
@@ -156,4 +156,72 @@
  
 </body>
 </html>
+
+<div class="player-list">
+    <div class="player" onclick="openModal('player1')">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/68/Andres_Iniesta_2018.jpg" alt="Andrés Iniesta">
+        <h3>Andrés Iniesta</h3>
+    </div>
+    <div class="player" onclick="openModal('player2')">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/1/15/Xavi_2014.jpg" alt="Xavi Hernández">
+        <h3>Xavi Hernández</h3>
+    </div>
+    <div class="player" onclick="openModal('player3')">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/e/ea/Ronaldinho_2015.jpg" alt="Ronaldinho">
+        <h3>Ronaldinho</h3>
+    </div>
+</div>
+
+<!-- Modální okno pro Andrés Iniesta-->
+<div id="player1" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('player1')">&times;</span>
+        <h2>Andrés Iniesta</h2>
+        <p>Andrés Iniesta je jedním z největších záložníků v historii fotbalu. Hrál klíčovou roli v mnoha vítězstvích Barcelony a také rozhodl o výhře ve finále MS 2010.</p>
+    </div>
+</div>
+
+<!-- Modální okno pro Xavi Hernández --> 
+<div id="player2" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('player2')">&times;</span>
+        <h2>Xavi Hernández</h2>
+        <p>Xavi byl mozkem a srdcem Barcelony. Je považován za jednoho z nejlepších záložníků všech dob a hrál klíčovou roli v éře dominantního fotbalu Barcelony.</p>
+    </div>
+</div>
+
+<!-- Modální okno pro Ronaldinha -->
+<div id="player3" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('player3')">&times;</span>
+        <h2>Ronaldinho</h2>
+        <p>Ronaldinho je jedním z nejvíce charismatických hráčů, kteří kdy hráli za Barcelonu. Je známý svou brilantní technikou, driblinkem a schopností dávat fantastické góly.</p>
+    </div>
+</div>
+
+<script>
+    // Otevře modální okno
+    function openModal(playerId) {
+        document.getElementById(playerId).style.display = "block";
+    }
+
+    // Zavře modální okno
+    function closeModal(playerId) {
+        document.getElementById(playerId).style.display = "none";
+    }
+
+    // Zavření modálního okna, když kliknete mimo něj
+    window.onclick = function(event) {
+        var modals = document.getElementsByClassName('modal');
+        for (var i = 0; i < modals.length; i++) {
+            if (event.target == modals[i]) {
+                modals[i].style.display = "none";
+            }
+        }
+    }
+</script>
+
+</body>
+</html>
+
  

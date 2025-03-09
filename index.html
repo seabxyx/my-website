@@ -285,7 +285,7 @@ header {
 
 </body>
 </html>
-    <!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -330,12 +330,6 @@ header {
             <input type="text" id="answer5" placeholder="Enter your answer (e.g., Jordi Alba)">
         </div>
 
-        <!-- Question 6 -->
-        <div class="question">
-            <p>6. Which legendary player is known for his smile and winning the Ballon d'Or with Barcelona?</p>
-            <input type="text" id="answer6" placeholder="Enter your answer (e.g., Ronaldinho)">
-        </div>
-
         <!-- Question 7 -->
         <div class="question">
             <p>7. Which midfielder is known for his composure and passing accuracy in the Barcelona midfield?</p>
@@ -378,7 +372,6 @@ header {
                 answer3: 'ronaldinho',
                 answer4: 'pique',
                 answer5: 'jordi alba',
-                answer6: 'ronaldinho',
                 answer7: 'busquets',
                 answer8: 'xavi',
                 answer9: 'iniesta',
@@ -390,21 +383,34 @@ header {
 
             // Loop through each question to check answers
             for (let i = 1; i <= 10; i++) {
-                const userAnswer = document.getElementById(`answer${i}`).value.trim().toLowerCase();
-                const resultDiv = document.getElementById(`result${i}`);
+                // Skip question number 6
+                if (i === 6) continue;
 
-                if (userAnswer === correctAnswers[`answer${i}`]) {
+                const userAnswer = document.getElementById(`answer${i}`).value.trim().toLowerCase();
+                const correctAnswer = correctAnswers[`answer${i}`];
+                const inputField = document.getElementById(`answer${i}`);
+                const resultMessage = document.createElement('span');
+
+                if (userAnswer === correctAnswer) {
                     correctCount++;
+                    inputField.style.backgroundColor = 'green';
+                    resultMessage.innerText = 'Correct';
+                    resultMessage.style.color = 'green';
                 } else {
                     incorrectCount++;
+                    inputField.style.backgroundColor = 'red';
+                    resultMessage.innerText = `Incorrect! Correct answer: ${correctAnswer}`;
+                    resultMessage.style.color = 'white';
                 }
+
+                inputField.parentNode.appendChild(resultMessage);
             }
 
             // Display the results
             document.getElementById("correctAnswers").innerText = `Correct Answers: ${correctCount}`;
             document.getElementById("incorrectAnswers").innerText = `Incorrect Answers: ${incorrectCount}`;
 
-            // Hide the results after the quiz is submitted
+            // Disable inputs after submission
             document.querySelectorAll('.question input').forEach(input => {
                 input.disabled = true;
             });
@@ -413,16 +419,6 @@ header {
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-   
 
 
 

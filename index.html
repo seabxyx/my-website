@@ -285,6 +285,78 @@ header {
 
 </body>
 </html>
+        <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FC Barcelona Quiz</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div id="nameDisplay" class="name-display"></div>
+
+    <div class="container">
+        <h1>FC Barcelona Player Quiz</h1>
+
+        <!-- Question 1 -->
+        <div class="question">
+            <p>1. Who is known as "The GOAT" (Greatest of All Time) in FC Barcelona history?</p>
+            <input type="text" id="answer1" placeholder="Enter your answer (e.g., Messi)" onkeydown="checkAnswer(event, 'answer1', 'messi')">
+        </div>
+
+        <!-- Question 2 -->
+        <div class="question">
+            <p>2. Which player is famous for his flair, skills, and Brazilian roots?</p>
+            <input type="text" id="answer2" placeholder="Enter your answer (e.g., Neymar)" onkeydown="checkAnswer(event, 'answer2', 'neymar')">
+        </div>
+
+        <!-- Question 3 -->
+        <div class="question">
+            <p>3. Who played as a midfielder and is known for his incredible dribbling and playmaking abilities?</p>
+            <input type="text" id="answer3" placeholder="Enter your answer (e.g., Ronaldinho)" onkeydown="checkAnswer(event, 'answer3', 'ronaldinho')">
+        </div>
+
+        <!-- Question 4 -->
+        <div class="question">
+            <p>4. Which defender has won numerous titles with Barcelona and is known for his leadership?</p>
+            <input type="text" id="answer4" placeholder="Enter your answer (e.g., Piqué)" onkeydown="checkAnswer(event, 'answer4', 'pique')">
+        </div>
+
+        <div id="resultMessage"></div>
+    </div>
+
+    <script>
+        // Function to check if the answer is correct
+        function checkAnswer(event, inputId, correctAnswer) {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                var answer = document.getElementById(inputId).value.trim().toLowerCase();
+
+                // Check if the answer is correct
+                if (answer === correctAnswer.toLowerCase()) {
+                    document.getElementById("resultMessage").innerText = "Correct!";
+                    document.getElementById(inputId).style.backgroundColor = "#28a745";  // Green color for correct
+                } else {
+                    document.getElementById("resultMessage").innerText = "Incorrect, try again!";
+                    document.getElementById(inputId).style.backgroundColor = "#dc3545";  // Red color for incorrect
+                }
+
+                // Reset the input field after 2 seconds
+                setTimeout(function() {
+                    document.getElementById(inputId).value = '';
+                    document.getElementById(inputId).style.backgroundColor = ''; // Reset color
+                }, 2000);
+            }
+        }
+    </script>
+
+</body>
+</html>
+ 
+
+
 
 
 

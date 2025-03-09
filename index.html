@@ -285,7 +285,7 @@ header {
 
 </body>
 </html>
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -332,30 +332,32 @@ header {
 
         <!-- Question 7 -->
         <div class="question">
-            <p>7. Which midfielder is known for his composure and passing accuracy in the Barcelona midfield?</p>
+            <p>6. Which midfielder is known for his composure and passing accuracy in the Barcelona midfield?</p>
             <input type="text" id="answer7" placeholder="Enter your answer (e.g., Sergio Busquets)">
         </div>
 
         <!-- Question 8 -->
         <div class="question">
-            <p>8. Who is known for his leadership on the pitch and was a central part of Barcelona's midfield for many years?</p>
+            <p>7. Who is known for his leadership on the pitch and was a central part of Barcelona's midfield for many years?</p>
             <input type="text" id="answer8" placeholder="Enter your answer (e.g., Xavi)">
         </div>
 
         <!-- Question 9 -->
         <div class="question">
-            <p>9. Who is famous for his incredible passing ability and was a key figure in Barcelona's golden era?</p>
+            <p>8. Who is famous for his incredible passing ability and was a key figure in Barcelona's golden era?</p>
             <input type="text" id="answer9" placeholder="Enter your answer (e.g., Iniesta)">
         </div>
 
         <!-- Question 10 -->
         <div class="question">
-            <p>10. Which forward is known for his goal-scoring prowess and has been a key part of Barcelona's attacking force?</p>
+            <p>9. Which forward is known for his goal-scoring prowess and has been a key part of Barcelona's attacking force?</p>
             <input type="text" id="answer10" placeholder="Enter your answer (e.g., Luis Suarez)">
         </div>
 
         <!-- Submit Button -->
         <button onclick="submitQuiz()">Submit</button>
+        <!-- Reset Button -->
+        <button onclick="resetQuiz()">Reset</button>
 
         <!-- Score counter -->
         <div id="score" class="result">
@@ -415,16 +417,26 @@ header {
                 input.disabled = true;
             });
         }
+
+        function resetQuiz() {
+            // Reset all input fields
+            document.querySelectorAll('.question input').forEach(input => {
+                input.value = '';
+                input.disabled = false;
+                input.style.backgroundColor = ''; // Reset the background color
+            });
+
+            // Remove result messages
+            document.querySelectorAll('.question span').forEach(span => {
+                span.remove();
+            });
+
+            // Reset score display
+            document.getElementById("correctAnswers").innerText = '';
+            document.getElementById("incorrectAnswers").innerText = '';
+        }
     </script>
 
 </body>
 </html>
 
-
-
-
-
-
-
-
- 

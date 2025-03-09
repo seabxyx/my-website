@@ -24,7 +24,7 @@
             flex-wrap: wrap;
         }
         .player {
-            margin: 0 15px;
+            margin: 15px;
             text-align: center;
             display: flex;
             flex-direction: column;
@@ -107,6 +107,19 @@
         <img src="https://www.fcbarcelona.com/photo-resources/2019/03/12/62f67c7f-28fa-49d4-aa5f-9a0502c46c41/znYiAFfh.jpg?width=1200&height=750" alt="Xavi Hernández">
         <h3>Xavi Hernández</h3>
     </div>
+    <!-- Noví hráči -->
+    <div class="player" onclick="openModal('player7')">
+        <img src="https://media.foxsports.com.au/image/2022/06/10/5c8eb4ea41b242ffbe074dfb7742f4be.jpg" alt="Gerard Piqué">
+        <h3>Gerard Piqué</h3>
+    </div>
+    <div class="player" onclick="openModal('player8')">
+        <img src="https://www.fcbarcelona.com/photo-resources/2020/07/31/47371fda-f7e9-4871-b72b-eabf6f9b9c3e/Alba.png?width=1000&height=700" alt="Jordi Alba">
+        <h3>Jordi Alba</h3>
+    </div>
+    <div class="player" onclick="openModal('player9')">
+        <img src="https://www.fcbarcelona.com/photo-resources/2022/03/14/7b9d468b-f9a2-452d-b5b9-df9d7f2e6497/sergio-busquets.jpg" alt="Sergio Busquets">
+        <h3>Sergio Busquets</h3>
+    </div>
 </div>
 
 <!-- Modální okno pro Lionel Messi-->
@@ -163,6 +176,33 @@
     </div>
 </div>
 
+<!-- Modální okno pro Gerard Piqué-->
+<div id="player7" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('player7')">&times;</span>
+        <h2>Gerard Piqué</h2>
+        <p>Gerard Piqué je legendární španělský obránce, který hrál klíčovou roli v obraně Barcelony. Získal mnoho titulů a trofejí, včetně několika Liga mistrů a La Liga titulů.</p>
+    </div>
+</div>
+
+<!-- Modální okno pro Jordi Alba-->
+<div id="player8" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('player8')">&times;</span>
+        <h2>Jordi Alba</h2>
+        <p>Jordi Alba je levý obránce, který strávil většinu své kariéry v Barceloně. Je známý svou rychlostí a schopností podporovat útoky i bránit.</p>
+    </div>
+</div>
+
+<!-- Modální okno pro Sergio Busquets-->
+<div id="player9" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('player9')">&times;</span>
+        <h2>Sergio Busquets</h2>
+        <p>Sergio Busquets je jeden z nejlepších defenzivních záložníků v historii. Byl klíčovým hráčem pro Barcelonu a španělskou reprezentaci, známý svou vynikající schopností kontrolovat hru.</p>
+    </div>
+</div>
+
 <script>
     // Otevře modální okno
     function openModal(playerId) {
@@ -187,5 +227,6 @@
 
 </body>
 </html>
+
 
  

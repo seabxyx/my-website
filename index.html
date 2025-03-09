@@ -285,7 +285,7 @@ header {
 
 </body>
 </html>
-        <!DOCTYPE html>
+       <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -294,23 +294,15 @@ header {
     <style>
         body {
             font-family: Arial, sans-serif;
+            text-align: center;
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            text-align: center;
         }
 
         .quiz-container {
-            background-color: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 600px;
+            margin-top: 50px;
+            display: inline-block;
             text-align: left;
         }
 
@@ -318,8 +310,6 @@ header {
             width: 80%;
             padding: 8px;
             margin-bottom: 10px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
         }
 
         button {
@@ -329,8 +319,6 @@ header {
             border: none;
             cursor: pointer;
             font-size: 16px;
-            border-radius: 5px;
-            margin: 10px 5px;
         }
 
         button:hover {
@@ -369,6 +357,7 @@ header {
         }
 
         .restart-btn {
+            margin-top: 10px;
             background-color: #28a745;
         }
 
@@ -379,8 +368,9 @@ header {
 </head>
 <body>
 
+    <h1>FC Barcelona Player Quiz</h1>
+
     <div class="quiz-container">
-        <h1>FC Barcelona Player Quiz</h1>
         <form id="quizForm">
             <!-- Question 1 -->
             <div class="question">

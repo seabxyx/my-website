@@ -285,7 +285,7 @@ header {
 
 </body>
 </html>
-      <!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -303,99 +303,117 @@ header {
         <!-- Question 1 -->
         <div class="question">
             <p>1. Who is known as "The GOAT" (Greatest of All Time) in FC Barcelona history?</p>
-            <input type="text" id="answer1" placeholder="Enter your answer (e.g., Messi)" onkeydown="checkAnswer(event, 'answer1', 'messi')">
-            <div id="result1" class="result"></div>
+            <input type="text" id="answer1" placeholder="Enter your answer (e.g., Messi)">
         </div>
 
         <!-- Question 2 -->
         <div class="question">
             <p>2. Which player is famous for his flair, skills, and Brazilian roots?</p>
-            <input type="text" id="answer2" placeholder="Enter your answer (e.g., Neymar)" onkeydown="checkAnswer(event, 'answer2', 'neymar')">
-            <div id="result2" class="result"></div>
+            <input type="text" id="answer2" placeholder="Enter your answer (e.g., Neymar)">
         </div>
 
         <!-- Question 3 -->
         <div class="question">
             <p>3. Who played as a midfielder and is known for his incredible dribbling and playmaking abilities?</p>
-            <input type="text" id="answer3" placeholder="Enter your answer (e.g., Ronaldinho)" onkeydown="checkAnswer(event, 'answer3', 'ronaldinho')">
-            <div id="result3" class="result"></div>
+            <input type="text" id="answer3" placeholder="Enter your answer (e.g., Ronaldinho)">
         </div>
 
         <!-- Question 4 -->
         <div class="question">
             <p>4. Which defender has won numerous titles with Barcelona and is known for his leadership?</p>
-            <input type="text" id="answer4" placeholder="Enter your answer (e.g., Piqué)" onkeydown="checkAnswer(event, 'answer4', 'pique')">
-            <div id="result4" class="result"></div>
+            <input type="text" id="answer4" placeholder="Enter your answer (e.g., Piqué)">
         </div>
 
         <!-- Question 5 -->
         <div class="question">
             <p>5. Which player is known for his speed and outstanding left-back skills for Barcelona?</p>
-            <input type="text" id="answer5" placeholder="Enter your answer (e.g., Jordi Alba)" onkeydown="checkAnswer(event, 'answer5', 'jordi alba')">
-            <div id="result5" class="result"></div>
+            <input type="text" id="answer5" placeholder="Enter your answer (e.g., Jordi Alba)">
         </div>
 
         <!-- Question 6 -->
         <div class="question">
             <p>6. Which legendary player is known for his smile and winning the Ballon d'Or with Barcelona?</p>
-            <input type="text" id="answer6" placeholder="Enter your answer (e.g., Ronaldinho)" onkeydown="checkAnswer(event, 'answer6', 'ronaldinho')">
-            <div id="result6" class="result"></div>
+            <input type="text" id="answer6" placeholder="Enter your answer (e.g., Ronaldinho)">
         </div>
 
         <!-- Question 7 -->
         <div class="question">
             <p>7. Which midfielder is known for his composure and passing accuracy in the Barcelona midfield?</p>
-            <input type="text" id="answer7" placeholder="Enter your answer (e.g., Sergio Busquets)" onkeydown="checkAnswer(event, 'answer7', 'busquets')">
-            <div id="result7" class="result"></div>
+            <input type="text" id="answer7" placeholder="Enter your answer (e.g., Sergio Busquets)">
         </div>
 
+        <!-- Question 8 -->
+        <div class="question">
+            <p>8. Who is known for his leadership on the pitch and was a central part of Barcelona's midfield for many years?</p>
+            <input type="text" id="answer8" placeholder="Enter your answer (e.g., Xavi)">
+        </div>
+
+        <!-- Question 9 -->
+        <div class="question">
+            <p>9. Who is famous for his incredible passing ability and was a key figure in Barcelona's golden era?</p>
+            <input type="text" id="answer9" placeholder="Enter your answer (e.g., Iniesta)">
+        </div>
+
+        <!-- Question 10 -->
+        <div class="question">
+            <p>10. Which forward is known for his goal-scoring prowess and has been a key part of Barcelona's attacking force?</p>
+            <input type="text" id="answer10" placeholder="Enter your answer (e.g., Luis Suarez)">
+        </div>
+
+        <!-- Submit Button -->
+        <button onclick="submitQuiz()">Submit</button>
+
         <!-- Score counter -->
-        <div id="score">
-            <p>Correct Answers: <span id="correctCount">0</span> | Incorrect Answers: <span id="incorrectCount">0</span></p>
+        <div id="score" class="result">
+            <p id="correctAnswers"></p>
+            <p id="incorrectAnswers"></p>
         </div>
     </div>
 
     <script>
-        let correctCount = 0;
-        let incorrectCount = 0;
+        function submitQuiz() {
+            const correctAnswers = {
+                answer1: 'messi',
+                answer2: 'neymar',
+                answer3: 'ronaldinho',
+                answer4: 'pique',
+                answer5: 'jordi alba',
+                answer6: 'ronaldinho',
+                answer7: 'busquets',
+                answer8: 'xavi',
+                answer9: 'iniesta',
+                answer10: 'suarez'
+            };
 
-        // Function to check if the answer is correct
-        function checkAnswer(event, inputId, correctAnswer) {
-            if (event.key === 'Enter') {
-                event.preventDefault();
-                var answer = document.getElementById(inputId).value.trim().toLowerCase();
-                var resultDiv = document.getElementById('result' + inputId.charAt(inputId.length - 1));
+            let correctCount = 0;
+            let incorrectCount = 0;
 
-                // Check if the answer is correct
-                if (answer === correctAnswer.toLowerCase()) {
-                    resultDiv.innerText = "Correct!";
-                    resultDiv.style.color = "green";
-                    document.getElementById(inputId).style.backgroundColor = "#28a745";  // Green color for correct
+            // Loop through each question to check answers
+            for (let i = 1; i <= 10; i++) {
+                const userAnswer = document.getElementById(`answer${i}`).value.trim().toLowerCase();
+                const resultDiv = document.getElementById(`result${i}`);
+
+                if (userAnswer === correctAnswers[`answer${i}`]) {
                     correctCount++;
-                    document.getElementById("correctCount").innerText = correctCount;
                 } else {
-                    resultDiv.innerText = "Incorrect, try again!";
-                    resultDiv.style.color = "red";
-                    document.getElementById(inputId).style.backgroundColor = "#dc3545";  // Red color for incorrect
                     incorrectCount++;
-                    document.getElementById("incorrectCount").innerText = incorrectCount;
                 }
-
-                // Disable further typing
-                document.getElementById(inputId).disabled = true;
-
-                // Reset the input field after 2 seconds
-                setTimeout(function() {
-                    document.getElementById(inputId).value = '';
-                    document.getElementById(inputId).style.backgroundColor = ''; // Reset color
-                    document.getElementById(inputId).disabled = false;
-                }, 2000);
             }
+
+            // Display the results
+            document.getElementById("correctAnswers").innerText = `Correct Answers: ${correctCount}`;
+            document.getElementById("incorrectAnswers").innerText = `Incorrect Answers: ${incorrectCount}`;
+
+            // Hide the results after the quiz is submitted
+            document.querySelectorAll('.question input').forEach(input => {
+                input.disabled = true;
+            });
         }
     </script>
 
 </body>
 </html>
+
 
 
 

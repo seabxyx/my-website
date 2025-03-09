@@ -294,221 +294,262 @@ header {
     <style>
         body {
             font-family: Arial, sans-serif;
+            background-color: #1C2A48;
+            color: #fff;
             text-align: center;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
         }
 
-        .quiz-container {
-            margin-top: 50px;
-            display: inline-block;
-            text-align: left;
+        .question-container {
+            margin: 20px;
         }
 
-        input[type="text"] {
-            width: 80%;
-            padding: 8px;
+        .question {
+            font-size: 1.5rem;
             margin-bottom: 10px;
         }
 
-        button {
-            padding: 10px 15px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            cursor: pointer;
-            font-size: 16px;
+        .answer-options {
+            margin: 10px 0;
         }
 
-        button:hover {
-            background-color: #0056b3;
+        .answer-option {
+            margin: 5px;
+            padding: 10px;
+            cursor: pointer;
+            border: 1px solid #fff;
+            border-radius: 5px;
+            background-color: #3A4C73;
+        }
+
+        .answer-option:hover {
+            background-color: #4E6B97;
+        }
+
+        .button-container {
+            margin-top: 20px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            background-color: #28a745;
+            border: none;
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #218838;
+        }
+
+        #timer {
+            font-size: 1.2rem;
+            margin-top: 20px;
+        }
+
+        #progressBar {
+            width: 0;
+            height: 20px;
+            background-color: #28a745;
+            margin-top: 10px;
+        }
+
+        #submitBtn, #resetBtn {
+            margin-top: 20px;
         }
 
         .correct {
             background-color: green;
             color: white;
-            animation: flashGreen 1s ease-out;
         }
 
         .incorrect {
             background-color: red;
             color: white;
-            animation: flashRed 1s ease-out;
-        }
-
-        .question {
-            margin-bottom: 20px;
-        }
-
-        @keyframes flashGreen {
-            0% { background-color: green; }
-            100% { background-color: white; }
-        }
-
-        @keyframes flashRed {
-            0% { background-color: red; }
-            100% { background-color: white; }
-        }
-
-        .result-message {
-            font-weight: bold;
-            margin-top: 20px;
-        }
-
-        .restart-btn {
-            margin-top: 10px;
-            background-color: #28a745;
-        }
-
-        .restart-btn:hover {
-            background-color: #218838;
         }
     </style>
 </head>
 <body>
 
-    <h1>FC Barcelona Player Quiz</h1>
+    <h1>FC Barcelona Quiz</h1>
+    <p>Test your knowledge about FC Barcelona's legends!</p>
 
-    <div class="quiz-container">
-        <form id="quizForm">
-            <!-- Question 1 -->
-            <div class="question">
-                <label for="question1">1. Who scored the legendary last-minute goal against Real Madrid in 2017?</label><br>
-                <input type="text" id="question1" placeholder="Enter your answer"><br><br>
-            </div>
-            
-            <!-- Question 2 -->
-            <div class="question">
-                <label for="question2">2. Who is known as the "King of Dribbling" in FC Barcelona?</label><br>
-                <input type="text" id="question2" placeholder="Enter your answer"><br><br>
-            </div>
+    <div id="timer">Time Left: <span id="timeLeft">60</span> seconds</div>
+    <div id="progressBar"></div>
 
-            <!-- Question 3 -->
-            <div class="question">
-                <label for="question3">3. Which player is famous for his "no-look" passes and vision?</label><br>
-                <input type="text" id="question3" placeholder="Enter your answer"><br><br>
-            </div>
+    <div id="quiz-container"></div>
+    <div id="questionCounter">Question: 1/9</div>
 
-            <!-- Question 4 -->
-            <div class="question">
-                <label for="question4">4. Who is considered Barcelona's greatest-ever player?</label><br>
-                <input type="text" id="question4" placeholder="Enter your answer"><br><br>
-            </div>
-
-            <!-- Question 5 -->
-            <div class="question">
-                <label for="question5">5. Which Barcelona player is known for his incredible passing range and midfield dominance?</label><br>
-                <input type="text" id="question5" placeholder="Enter your answer"><br><br>
-            </div>
-
-            <!-- Question 6 -->
-            <div class="question">
-                <label for="question6">6. Who is Barcelona's all-time top scorer?</label><br>
-                <input type="text" id="question6" placeholder="Enter your answer"><br><br>
-            </div>
-
-            <!-- Question 7 -->
-            <div class="question">
-                <label for="question7">7. Who was the Brazilian forward known for his incredible skill and flair at Barcelona?</label><br>
-                <input type="text" id="question7" placeholder="Enter your answer"><br><br>
-            </div>
-
-            <!-- Question 8 -->
-            <div class="question">
-                <label for="question8">8. Who played as Barcelona's defensive rock for over a decade and was known for his leadership?</label><br>
-                <input type="text" id="question8" placeholder="Enter your answer"><br><br>
-            </div>
-
-            <!-- Question 9 -->
-            <div class="question">
-                <label for="question9">9. Who is the legendary Barcelona captain known for his vision and leadership in midfield?</label><br>
-                <input type="text" id="question9" placeholder="Enter your answer"><br><br>
-            </div>
-
-            <button type="button" onclick="checkAnswers()">Submit</button>
-            <button type="button" class="restart-btn" onclick="restartQuiz()">Restart</button>
-        </form>
-
-        <p id="resultMessage" class="result-message"></p>
+    <div class="button-container">
+        <button id="submitBtn" class="btn" onclick="submitQuiz()">Submit</button>
+        <button id="resetBtn" class="btn" onclick="resetQuiz()">Restart Quiz</button>
     </div>
 
     <script>
-        function checkAnswers() {
-            let score = 0;
-            const totalQuestions = 9;
-            let message = "";
+        let questions = [
+            {
+                question: "Who is known as the greatest player in FC Barcelona's history?",
+                options: ["Lionel Messi", "Ronaldinho", "Jordi Alba"],
+                correct: "Lionel Messi"
+            },
+            {
+                question: "Which of these players was a Brazilian forward for Barcelona?",
+                options: ["Neymar", "Ronaldinho", "Suarez"],
+                correct: "Ronaldinho"
+            },
+            {
+                question: "Which player is considered a defensive legend at Barcelona?",
+                options: ["Pique", "Iniesta", "Busquets"],
+                correct: "Pique"
+            },
+            {
+                question: "Which player is famous for his incredible passing abilities?",
+                options: ["Xavi", "Suarez", "Messi"],
+                correct: "Xavi"
+            },
+            {
+                question: "Who is considered the best defensive midfielder in Barcelona's history?",
+                options: ["Busquets", "Iniesta", "Alba"],
+                correct: "Busquets"
+            },
+            {
+                question: "Which player was famous for his skill and creativity, especially in the 2000s?",
+                options: ["Ronaldinho", "Messi", "Xavi"],
+                correct: "Ronaldinho"
+            },
+            {
+                question: "Who scored the most goals for Barcelona in a single season?",
+                options: ["Messi", "Neymar", "Suarez"],
+                correct: "Messi"
+            },
+            {
+                question: "Who was the star of Barcelona’s 2015 treble-winning season?",
+                options: ["Neymar", "Messi", "Suarez"],
+                correct: "Messi"
+            },
+            {
+                question: "Which player is the longest-serving captain in FC Barcelona's history?",
+                options: ["Messi", "Pique", "Xavi"],
+                correct: "Messi"
+            }
+        ];
 
-            const answers = {
-                "question1": "messi",
-                "question2": "ronaldinho",
-                "question3": "xavi",
-                "question4": "messi",
-                "question5": "busquets",
-                "question6": "messi",
-                "question7": "neymar",
-                "question8": "pique",
-                "question9": "iniesta"
-            };
+        let currentQuestionIndex = 0;
+        let correctAnswers = 0;
+        let incorrectAnswers = 0;
+        let timer = 60;
+        let timerInterval;
 
-            const correctAnswers = {
-                "question1": "Messi",
-                "question2": "Ronaldinho",
-                "question3": "Xavi",
-                "question4": "Messi",
-                "question5": "Busquets",
-                "question6": "Messi",
-                "question7": "Neymar",
-                "question8": "Pique",
-                "question9": "Iniesta"
-            };
+        // Start the quiz
+        function startQuiz() {
+            shuffleArray(questions);
+            displayQuestion();
+            startTimer();
+        }
 
-            // Check each question answer
-            for (let i = 1; i <= totalQuestions; i++) {
-                const userAnswer = document.getElementById("question" + i).value.trim().toLowerCase();
-                const correctAnswer = answers["question" + i];
+        // Shuffle questions to randomize them
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
 
-                if (userAnswer === correctAnswer) {
-                    score++;
-                    document.getElementById("question" + i).classList.add("correct");
-                    setTimeout(() => document.getElementById("question" + i).classList.remove("correct"), 1000);
-                } else {
-                    document.getElementById("question" + i).classList.add("incorrect");
-                    document.getElementById("question" + i).insertAdjacentHTML('afterend', `<p>Correct answer: ${correctAnswers["question" + i]}</p>`);
-                    setTimeout(() => document.getElementById("question" + i).classList.remove("incorrect"), 1000);
+        // Display current question
+        function displayQuestion() {
+            const questionContainer = document.getElementById("quiz-container");
+            questionContainer.innerHTML = "";
+            const questionData = questions[currentQuestionIndex];
+            
+            const questionText = document.createElement("div");
+            questionText.classList.add("question");
+            questionText.innerHTML = questionData.question;
+            questionContainer.appendChild(questionText);
+
+            const optionsContainer = document.createElement("div");
+            optionsContainer.classList.add("answer-options");
+
+            questionData.options.forEach(option => {
+                const optionBtn = document.createElement("button");
+                optionBtn.classList.add("answer-option");
+                optionBtn.innerText = option;
+                optionBtn.onclick = () => checkAnswer(option);
+                optionsContainer.appendChild(optionBtn);
+            });
+
+            questionContainer.appendChild(optionsContainer);
+        }
+
+        // Check the answer
+        function checkAnswer(selectedAnswer) {
+            const questionData = questions[currentQuestionIndex];
+            const options = document.querySelectorAll(".answer-option");
+
+            options.forEach(option => {
+                option.disabled = true;
+                if (option.innerText === questionData.correct) {
+                    option.classList.add("correct");
+                } else if (option.innerText === selectedAnswer) {
+                    option.classList.add("incorrect");
+                    option.innerText += ` (Correct: ${questionData.correct})`;
                 }
+            });
+
+            if (selectedAnswer === questionData.correct) {
+                correctAnswers++;
+            } else {
+                incorrectAnswers++;
             }
 
-            // Show the score result after all answers are checked
+            // Go to next question after a short delay
             setTimeout(() => {
-                if (score === totalQuestions) {
-                    message = "Congratulations! You got all answers correct!";
-                } else {
-                    message = `You got ${score} out of ${totalQuestions} correct.`;
+                currentQuestionIndex++;
+                if (currentQuestionIndex < questions.length) {
+                    displayQuestion();
+                    document.getElementById("questionCounter").innerHTML = `Question: ${currentQuestionIndex + 1}/9`;
                 }
-                document.getElementById("resultMessage").innerText = message;
             }, 1000);
         }
 
-        function restartQuiz() {
-            // Reset all inputs and remove messages
-            const inputs = document.querySelectorAll('input[type="text"]');
-            inputs.forEach(input => {
-                input.value = '';
-                input.classList.remove('correct', 'incorrect');
-            });
-
-            const resultMessage = document.getElementById("resultMessage");
-            resultMessage.innerText = '';
-            const answerHints = document.querySelectorAll('.question p');
-            answerHints.forEach(hint => hint.remove());
+        // Submit quiz
+        function submitQuiz() {
+            clearInterval(timerInterval);
+            alert(`Quiz complete! Correct: ${correctAnswers}, Incorrect: ${incorrectAnswers}`);
         }
+
+        // Reset quiz
+        function resetQuiz() {
+            currentQuestionIndex = 0;
+            correctAnswers = 0;
+            incorrectAnswers = 0;
+            timer = 60;
+            document.getElementById("timeLeft").textContent = timer;
+            document.getElementById("progressBar").style.width = "0%";
+            document.getElementById("questionCounter").innerHTML = `Question: 1/9`;
+            startQuiz();
+        }
+
+        // Start the timer
+        function startTimer() {
+            timerInterval = setInterval(function() {
+                if (timer > 0) {
+                    timer--;
+                    document.getElementById("timeLeft").textContent = timer;
+                    let progress = ((60 - timer) / 60) * 100;
+                    document.getElementById("progressBar").style.width = progress + "%";
+                } else {
+                    clearInterval(timerInterval);
+                    alert("Time's up! Submit your answers.");
+                }
+            }, 1000);
+        }
+
+        // Initialize quiz
+        startQuiz();
     </script>
 
 </body>
 </html>
-
-
 
 
 

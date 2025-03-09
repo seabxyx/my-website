@@ -240,8 +240,8 @@ header {
         document.getElementById(playerId).style.display = 'none';
     }
 </script>
-                  <input type="text" id="username1" placeholder="Enter your username" style="width: 100%; padding: 10px; margin-bottom: 10px;">
-        <!DOCTYPE html>
+               
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -251,24 +251,98 @@ header {
 </head>
 <body>
 
+    <!-- This div will show the name at the top -->
+    <div id="nameDisplay" class="name-display"></div>
+
     <div class="container">
         <input type="text" id="username1" placeholder="Enter your username" 
-               style="width: 100%; padding: 10px; margin-bottom: 10px;" oninput="updateName()">
-        <p id="displayName" style="font-size: 18px; color: white; position: absolute; bottom: 20px; left: 20px;"></p>
+               style="width: 100%; padding: 10px; margin-bottom: 10px;" oninput="updateName()" onkeydown="checkEnter(event)">
     </div>
 
     <script>
         // Function to update the name in the bottom left corner as the user types
         function updateName() {
             var username = document.getElementById("username1").value;
+            // Dynamically updating the name at the bottom left
             document.getElementById("displayName").innerText = username;
+        }
+
+        // Function to handle the Enter key press
+        function checkEnter(event) {
+            if (event.key === 'Enter') {
+                event.preventDefault(); // Prevent default form submission
+
+                var username = document.getElementById("username1").value;
+
+                // If username is not empty, update the top of the page and hide the input
+                if (username.trim() !== "") {
+                    document.getElementById("nameDisplay").innerText = "Welcome, " + username + "!";
+                    document.getElementById("username1").style.display = 'none'; // Hide input field
+                }
+            }
         }
     </script>
 
 </body>
 </html>
 
+        /* Basic reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
+/* Body and background styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #333;  /* Dark background for contrast */
+    color: white;
+    padding: 0;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+/* Container for the input field */
+.container {
+    width: 80%;
+    max-width: 600px;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.7); /* Slightly dark background for better contrast */
+    border-radius: 10px;
+    text-align: center;
+}
+
+/* Styling for the input field */
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 18px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    background-color: #444;
+    color: white;
+}
+
+input[type="text"]:focus {
+    border: 1px solid #f39c12;  /* Highlight the border on focus */
+    outline: none;
+}
+
+/* Styling for the displayed name at the top of the page */
+.name-display {
+    font-size: 24px;
+    color: white;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-weight: bold;
+}
 
 
 

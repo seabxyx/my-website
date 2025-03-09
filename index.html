@@ -10,6 +10,11 @@
             background-color: #f4f4f4;
             margin: 0;
             padding: 0;
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/FC_Barcelona_logo.svg/1280px-FC_Barcelona_logo.svg.png'); /* URL loga FC Barcelona */
+            background-size: contain; /* Aby logo bylo přizpůsobeno velikosti pozadí */
+            background-repeat: no-repeat; /* Neopakovat obrázek */
+            background-position: center; /* Umístění loga na střed */
+            background-attachment: fixed; /* Logo zůstane pevně na pozadí při rolování */
         }
         header {
             background-color: #0033a0;
@@ -127,7 +132,8 @@
     <div class="modal-content">
         <span class="close" onclick="closeModal('player1')">&times;</span>
         <h2>Lionel Messi</h2>
-        <p>Lionel messi je nejlepší fotbalista všech dob, který hrál za FC Barcelonu. Je považován za jednoho z nejlepších hráčů na světě.</p>
+        <p>Lionel Messi je nejlepší fotbalista všech dob, který hrál za FC Barcelonu. Je považován za jednoho z nejlepších hráčů na světě.</p>
+        <p><strong>Góly:</strong> 672 | <strong>Asistence:</strong> 302</p>
     </div>
 </div>
 
@@ -137,6 +143,7 @@
         <span class="close" onclick="closeModal('player2')">&times;</span>
         <h2>Neymar</h2>
         <p>Neymar je brazilský fotbalista, který je známý svou rychlostí a technickými dovednostmi. Hrál za FC Barcelonu na pozici levého křídla.</p>
+        <p><strong>Góly:</strong> 105 | <strong>Asistence:</strong> 80</p>
     </div>
 </div>
 
@@ -145,7 +152,8 @@
     <div class="modal-content">
         <span class="close" onclick="closeModal('player3')">&times;</span>
         <h2>Luis Suarez</h2>
-        <p>Suarez je Uruguayský útočník, který je legenda klubu FC Barcelony. Je známý svou schopností dávat góly a tvořit asistence. Assists: 302, Appearances: 778, Goals: 672.</p>
+        <p>Suarez je Uruguayský útočník, který je legenda klubu FC Barcelony. Je známý svou schopností dávat góly a tvořit asistence.</p>
+        <p><strong>Góly:</strong> 198 | <strong>Asistence:</strong> 97</p>
     </div>
 </div>
 
@@ -155,6 +163,7 @@
         <span class="close" onclick="closeModal('player6')">&times;</span>
         <h2>Ronaldinho</h2>
         <p>Ronaldinho je jedním z nejvíce charismatických hráčů, kteří kdy hráli za Barcelonu. Je známý svou brilantní technikou, driblinkem a schopností dávat fantastické góly.</p>
+        <p><strong>Góly:</strong> 94 | <strong>Asistence:</strong> 70</p>
     </div>
 </div>
 
@@ -164,6 +173,7 @@
         <span class="close" onclick="closeModal('player4')">&times;</span>
         <h2>Andrés Iniesta</h2>
         <p>Andrés Iniesta je legendární španělský záložník, který strávil celou svou profesionální kariéru v FC Barceloně. Vstřelil 57 gólů a připsal si 137 asistencí ve 674 zápasech za tento klub. Je známý svou brilantní technikou, schopností kontrolovat hru a nezapomenutelným vítězným gólem ve finále MS 2010, což ho činí jedním z největších hráčů v historii Barcelony.</p>
+        <p><strong>Góly:</strong> 57 | <strong>Asistence:</strong> 137</p>
     </div>
 </div>
 
@@ -173,55 +183,51 @@
         <span class="close" onclick="closeModal('player5')">&times;</span>
         <h2>Xavi Hernández</h2>
         <p>Xavi byl mozkem a srdcem Barcelony. Je považován za jednoho z nejlepších záložníků všech dob a hrál klíčovou roli v éře dominantního fotbalu Barcelony.</p>
+        <p><strong>Góly:</strong> 85 | <strong>Asistence:</strong> 185</p>
     </div>
 </div>
 
-<!-- Modální okno pro Gerard Piqué-->
+<!-- Nové modální okno pro Piqué, Jordiho Albu a Busquetse -->
+
+<!-- Modální okno pro Gerard Piqué -->
 <div id="player7" class="modal">
     <div class="modal-content">
         <span class="close" onclick="closeModal('player7')">&times;</span>
         <h2>Gerard Piqué</h2>
-        <p>Gerard Piqué je legendární španělský obránce, který hrál klíčovou roli v obraně Barcelony. Získal mnoho titulů a trofejí, včetně několika Liga mistrů a La Liga titulů.</p>
+        <p>Gerard Piqué je legendární stoper, který byl klíčovou součástí obran Barcelony.</p>
+        <p><strong>Góly:</strong> 53 | <strong>Asistence:</strong> 15</p>
     </div>
 </div>
 
-<!-- Modální okno pro Jordi Alba-->
+<!-- Modální okno pro Jordiho Albu -->
 <div id="player8" class="modal">
     <div class="modal-content">
         <span class="close" onclick="closeModal('player8')">&times;</span>
         <h2>Jordi Alba</h2>
-        <p>Jordi Alba je levý obránce, který strávil většinu své kariéry v Barceloně. Je známý svou rychlostí a schopností podporovat útoky i bránit.</p>
+        <p>Jordi Alba je jeden z nejlepších levých beků, který hrál pro FC Barcelonu a je známý svou rychlostí a přesností při přenášení míče.</p>
+        <p><strong>Góly:</strong> 26 | <strong>Asistence:</strong> 68</p>
     </div>
 </div>
 
-<!-- Modální okno pro Sergio Busquets-->
+<!-- Modální okno pro Sergio Busquetse -->
 <div id="player9" class="modal">
     <div class="modal-content">
         <span class="close" onclick="closeModal('player9')">&times;</span>
         <h2>Sergio Busquets</h2>
-        <p>Sergio Busquets je jeden z nejlepších defenzivních záložníků v historii. Byl klíčovým hráčem pro Barcelonu a španělskou reprezentaci, známý svou vynikající schopností kontrolovat hru.</p>
+        <p>Sergio Busquets je záložník s neuvěřitelnou taktickou inteligencí a schopností ovládat hru ve středu pole.</p>
+        <p><strong>Góly:</strong> 26 | <strong>Asistence:</strong> 77</p>
     </div>
 </div>
 
 <script>
-    // Otevře modální okno
+    // Funkce pro otevření modálního okna
     function openModal(playerId) {
-        document.getElementById(playerId).style.display = "block";
+        document.getElementById(playerId).style.display = 'block';
     }
 
-    // Zavře modální okno
+    // Funkce pro zavření modálního okna
     function closeModal(playerId) {
-        document.getElementById(playerId).style.display = "none";
-    }
-
-    // Zavření modálního okna, když kliknete mimo něj
-    window.onclick = function(event) {
-        var modals = document.getElementsByClassName('modal');
-        for (var i = 0; i < modals.length; i++) {
-            if (event.target == modals[i]) {
-                modals[i].style.display = "none";
-            }
-        }
+        document.getElementById(playerId).style.display = 'none';
     }
 </script>
 

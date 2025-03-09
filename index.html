@@ -285,7 +285,7 @@ header {
 
 </body>
 </html>
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -491,7 +491,7 @@ header {
                     option.classList.add("correct");
                 } else if (option.innerText === selectedAnswer) {
                     option.classList.add("incorrect");
-                    option.innerText +=  (Correct: ${questionData.correct});
+                    option.innerText += ` (Correct: ${questionData.correct})`;
                 }
             });
 
@@ -506,7 +506,7 @@ header {
                 currentQuestionIndex++;
                 if (currentQuestionIndex < questions.length) {
                     displayQuestion();
-                    document.getElementById("questionCounter").innerHTML = Question: ${currentQuestionIndex + 1}/9;
+                    document.getElementById("questionCounter").innerHTML = `Question: ${currentQuestionIndex + 1}/9`;
                 }
             }, 1000);
         }
@@ -514,7 +514,7 @@ header {
         // Submit quiz
         function submitQuiz() {
             clearInterval(timerInterval);
-            alert(Quiz complete! Correct: ${correctAnswers}, Incorrect: ${incorrectAnswers});
+            alert(`Quiz complete! Correct: ${correctAnswers}, Incorrect: ${incorrectAnswers}`);
         }
 
         // Reset quiz
@@ -525,7 +525,7 @@ header {
             timer = 60;
             document.getElementById("timeLeft").textContent = timer;
             document.getElementById("progressBar").style.width = "0%";
-            document.getElementById("questionCounter").innerHTML = Question: 1/9;
+            document.getElementById("questionCounter").innerHTML = `Question: 1/9`;
             startQuiz();
         }
 
@@ -550,6 +550,3 @@ header {
 
 </body>
 </html>
-
-
-

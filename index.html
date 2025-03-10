@@ -366,6 +366,10 @@ header {
             background-color: red;
             color: white;
         }
+
+        #quiz-container {
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -373,15 +377,24 @@ header {
     <h1>FC Barcelona Quiz</h1>
     <p>Test your knowledge about FC Barcelona's legends!</p>
 
+    <!-- "Start Quiz" Button -->
+    <button id="quizButton" class="btn" onclick="startQuizPage()">Start Quiz</button>
+
+    <!-- Timer and Progress Bar -->
     <div id="timer">Time Left: <span id="timeLeft">60</span> seconds</div>
     <div id="progressBar"></div>
 
-    <div id="quiz-container"></div>
-    <div id="questionCounter">Question: 1/9</div>
+    <!-- Quiz content -->
+    <div id="quiz-container">
+        <div id="quizContent">
+            <div id="quiz-container"></div>
+            <div id="questionCounter">Question: 1/9</div>
+        </div>
 
-    <div class="button-container">
-        <button id="submitBtn" class="btn" onclick="submitQuiz()">Submit</button>
-        <button id="resetBtn" class="btn" onclick="resetQuiz()">Restart Quiz</button>
+        <div class="button-container">
+            <button id="submitBtn" class="btn" onclick="submitQuiz()">Submit</button>
+            <button id="resetBtn" class="btn" onclick="resetQuiz()">Restart Quiz</button>
+        </div>
     </div>
 
     <script>
@@ -438,6 +451,13 @@ header {
         let incorrectAnswers = 0;
         let timer = 60;
         let timerInterval;
+
+        // Start the quiz page
+        function startQuizPage() {
+            document.getElementById("quizButton").style.display = "none"; // Hide the quiz button
+            document.getElementById("quiz-container").style.display = "block"; // Show quiz content
+            startQuiz();
+        }
 
         // Start the quiz
         function startQuiz() {
@@ -543,8 +563,6 @@ header {
             }, 1000);
         }
 
-        // Initialize quiz
-        startQuiz();
     </script>
 
 </body>

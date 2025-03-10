@@ -366,19 +366,12 @@ header {
             background-color: red;
             color: white;
         }
-
-        #quiz-container {
-            display: none;
-        }
     </style>
 </head>
 <body>
 
     <h1>FC Barcelona Quiz</h1>
     <p>Test your knowledge about FC Barcelona's legends!</p>
-
-    <!-- "Start Quiz" Button -->
-    <button id="quizButton" class="btn" onclick="startQuizPage()">Start Quiz</button>
 
     <!-- Timer and Progress Bar -->
     <div id="timer">Time Left: <span id="timeLeft">60</span> seconds</div>
@@ -387,7 +380,6 @@ header {
     <!-- Quiz content -->
     <div id="quiz-container">
         <div id="quizContent">
-            <div id="quiz-container"></div>
             <div id="questionCounter">Question: 1/9</div>
         </div>
 
@@ -452,13 +444,6 @@ header {
         let timer = 60;
         let timerInterval;
 
-        // Start the quiz page
-        function startQuizPage() {
-            document.getElementById("quizButton").style.display = "none"; // Hide the quiz button
-            document.getElementById("quiz-container").style.display = "block"; // Show quiz content
-            startQuiz();
-        }
-
         // Start the quiz
         function startQuiz() {
             shuffleArray(questions);
@@ -476,7 +461,7 @@ header {
 
         // Display current question
         function displayQuestion() {
-            const questionContainer = document.getElementById("quiz-container");
+            const questionContainer = document.getElementById("quizContent");
             questionContainer.innerHTML = "";
             const questionData = questions[currentQuestionIndex];
             
@@ -563,9 +548,10 @@ header {
             }, 1000);
         }
 
+        // Start quiz on page load
+        window.onload = startQuiz;
+
     </script>
 
 </body>
 </html>
-
-

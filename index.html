@@ -294,63 +294,78 @@ header {
         body {
             font-family: Arial, sans-serif;
             background-color: #1C2A48;
-            color: #fff;
+            color: white;
+            text-align: center;
+            padding: 50px;
+        }
+        .btn {
+            padding: 15px 30px;
+            background-color: #28a745;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .btn:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Welcome to the FC Barcelona Quiz</h1>
+    <p>Test your knowledge about FC Barcelona's legends!</p>
+    <button class="btn" onclick="startQuiz()">Start Quiz</button>
+
+    <script>
+        function startQuiz() {
+            window.location.href = "quiz.html"; // Redirect to quiz page
+        }
+    </script>
+
+</body>
+</html>
+
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FC Barcelona Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1C2A48;
+            color: white;
             text-align: center;
         }
-
-        .hidden {
-            display: none;
-        }
-
         .question-container {
             margin: 20px;
         }
-
         .question {
             font-size: 1.5rem;
             margin-bottom: 10px;
         }
-
-        .answer-options {
-            margin: 10px 0;
-        }
-
         .answer-option {
-            margin: 5px;
+            display: block;
+            margin: 10px auto;
             padding: 10px;
             cursor: pointer;
-            border: 1px solid #fff;
-            border-radius: 5px;
+            border: 1px solid white;
             background-color: #3A4C73;
             color: white;
+            width: 200px;
+            text-align: center;
+            border-radius: 5px;
         }
-
         .answer-option:hover {
             background-color: #4E6B97;
         }
-
-        .button-container {
-            margin-top: 20px;
-        }
-
-        .btn {
-            padding: 10px 20px;
-            background-color: #28a745;
-            border: none;
-            color: white;
-            font-size: 1rem;
-            cursor: pointer;
-        }
-
-        .btn:hover {
-            background-color: #218838;
-        }
-
         #timer {
             font-size: 1.2rem;
             margin-top: 20px;
         }
-
         #progressBar {
             width: 100%;
             height: 20px;
@@ -358,22 +373,15 @@ header {
             margin-top: 10px;
             position: relative;
         }
-
         #progressBar div {
             height: 100%;
             background-color: #28a745;
             width: 0%;
             transition: width 1s linear;
         }
-
-        #submitBtn, #resetBtn {
-            margin-top: 20px;
-        }
-
         .correct {
             background-color: green !important;
         }
-
         .incorrect {
             background-color: red !important;
         }
@@ -381,33 +389,11 @@ header {
 </head>
 <body>
 
-    <!-- Welcome screen -->
-    <div id="welcome-screen">
-        <h1>FC Barcelona Quiz</h1>
-        <p>Test your knowledge about FC Barcelona's legends!</p>
-        <button id="startQuiz" class="btn">Start Quiz</button>
-    </div>
-
-    <!-- Quiz screen (hidden by default) -->
-    <div id="quiz-screen" class="hidden">
-        <h1>FC Barcelona Quiz</h1>
-
-        <!-- Timer and Progress Bar -->
-        <div id="timer">Time Left: <span id="timeLeft">60</span> seconds</div>
-        <div id="progressBar"><div></div></div>
-
-        <!-- Quiz content -->
-        <div id="quiz-container">
-            <div id="quizContent">
-                <div id="questionCounter">Question: 1/9</div>
-            </div>
-
-            <div class="button-container">
-                <button id="submitBtn" class="btn" onclick="submitQuiz()">Submit</button>
-                <button id="resetBtn" class="btn" onclick="resetQuiz()">Restart Quiz</button>
-            </div>
-        </div>
-    </div>
+    <h1>FC Barcelona Quiz</h1>
+    <div id="timer">Time Left: <span id="timeLeft">60</span> seconds</div>
+    <div id="progressBar"><div></div></div>
+    
+    <div id="quiz-container"></div>
 
     <script>
         let questions = [
@@ -415,23 +401,13 @@ header {
             { question: "Which of these players was a Brazilian forward for Barcelona?", options: ["Neymar", "Ronaldinho", "Suarez"], correct: "Ronaldinho" },
             { question: "Which player is considered a defensive legend at Barcelona?", options: ["Pique", "Iniesta", "Busquets"], correct: "Pique" },
             { question: "Which player is famous for his incredible passing abilities?", options: ["Xavi", "Suarez", "Messi"], correct: "Xavi" },
-            { question: "Who is considered the best defensive midfielder in Barcelona's history?", options: ["Busquets", "Iniesta", "Alba"], correct: "Busquets" },
-            { question: "Which player was famous for his skill and creativity, especially in the 2000s?", options: ["Ronaldinho", "Messi", "Xavi"], correct: "Ronaldinho" },
-            { question: "Who scored the most goals for Barcelona in a single season?", options: ["Messi", "Neymar", "Suarez"], correct: "Messi" },
-            { question: "Who was the star of Barcelona’s 2015 treble-winning season?", options: ["Neymar", "Messi", "Suarez"], correct: "Messi" },
-            { question: "Which player is the longest-serving captain in FC Barcelona's history?", options: ["Messi", "Pique", "Xavi"], correct: "Messi" }
+            { question: "Who is considered the best defensive midfielder in Barcelona's history?", options: ["Busquets", "Iniesta", "Alba"], correct: "Busquets" }
         ];
 
         let currentQuestionIndex = 0;
         let correctAnswers = 0;
         let timer = 60;
         let timerInterval;
-
-        document.getElementById("startQuiz").addEventListener("click", function() {
-            document.getElementById("welcome-screen").classList.add("hidden");
-            document.getElementById("quiz-screen").classList.remove("hidden");
-            startQuiz();
-        });
 
         function startQuiz() {
             shuffleArray(questions);
@@ -447,33 +423,27 @@ header {
         }
 
         function displayQuestion() {
-            const questionContainer = document.getElementById("quizContent");
-            questionContainer.innerHTML = "";
-            const questionData = questions[currentQuestionIndex];
+            const quizContainer = document.getElementById("quiz-container");
+            quizContainer.innerHTML = "";
 
-            const questionText = document.createElement("div");
-            questionText.classList.add("question");
-            questionText.innerHTML = questionData.question;
-            questionContainer.appendChild(questionText);
-
-            const optionsContainer = document.createElement("div");
-            optionsContainer.classList.add("answer-options");
+            let questionData = questions[currentQuestionIndex];
+            let questionElement = document.createElement("div");
+            questionElement.classList.add("question");
+            questionElement.innerHTML = questionData.question;
+            quizContainer.appendChild(questionElement);
 
             questionData.options.forEach(option => {
-                const optionBtn = document.createElement("button");
+                let optionBtn = document.createElement("button");
                 optionBtn.classList.add("answer-option");
                 optionBtn.innerText = option;
                 optionBtn.onclick = () => checkAnswer(option);
-                optionsContainer.appendChild(optionBtn);
+                quizContainer.appendChild(optionBtn);
             });
-
-            questionContainer.appendChild(optionsContainer);
-            document.getElementById("questionCounter").innerHTML = `Question: ${currentQuestionIndex + 1}/9`;
         }
 
         function checkAnswer(selectedAnswer) {
-            const questionData = questions[currentQuestionIndex];
-            const options = document.querySelectorAll(".answer-option");
+            let questionData = questions[currentQuestionIndex];
+            let options = document.querySelectorAll(".answer-option");
 
             options.forEach(option => {
                 option.disabled = true;
@@ -506,19 +476,19 @@ header {
                 if (timer > 0) {
                     timer--;
                     document.getElementById("timeLeft").textContent = timer;
+                    document.querySelector("#progressBar div").style.width = `${(60 - timer) / 60 * 100}%`;
                 } else {
                     clearInterval(timerInterval);
                     submitQuiz();
                 }
             }, 1000);
         }
+
+        window.onload = startQuiz;
     </script>
 
 </body>
 </html>
-
-
-
 
 
 
